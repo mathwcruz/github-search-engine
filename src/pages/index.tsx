@@ -42,7 +42,7 @@ export default function Home() {
               placeholder='Digite aqui'
             />
           </Form.Item>
-          <button type='submit'>Pesquisar</button>
+          <Button htmlType='submit'>Pesquisar</Button>
         </Form>
       </div>
     </div>
