@@ -2,6 +2,8 @@ import { useCallback } from 'react';
 import Image from 'next/image';
 import { Form, Input, Button } from 'antd';
 
+import { UserList } from 'components/UserList';
+
 import styles from 'styles/pages/Home.module.scss';
 
 export default function Home() {
@@ -44,6 +46,14 @@ export default function Home() {
           </Form.Item>
           <Button htmlType='submit'>Pesquisar</Button>
         </Form>
+      </div>
+      <div className={styles.usersList}>
+        <ul>
+          <UserList />
+          <UserList />
+          <UserList />
+          <UserList />
+        </ul>
       </div>
     </div>
   );
