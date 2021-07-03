@@ -5,13 +5,13 @@ import { api } from '../api';
 interface HTTTPMethodData {
   url: string;
   payload?: object;
-  config: object;
+  config?: object;
 }
 
 export const useFetch = () => {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<object>(undefined);
-  const [error, setError] = useState<object>(undefined);
+  const [data, setData] = useState(undefined);
+  const [error, setError] = useState(undefined);
 
   const get = useCallback(async ({ url, config }: HTTTPMethodData) => {
     try {
