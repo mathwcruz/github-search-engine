@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 
+import { useFetch } from 'services/hooks/fetch';
+
 import styles from 'styles/components/MemberList.module.scss';
 
 interface MemberListProps {
@@ -11,7 +13,11 @@ interface MemberListProps {
   };
 }
 
+// TODO: buscar em https://api.github/users/${login} os dados daquele membros e retornar no card, usar useFetch
+
 export function MemberList({ member }: MemberListProps) {
+  const { data: user, get: getUser, loading: loadingUser } = useFetch();
+
   return (
     <li className={styles.memberItem}>
       <section>

@@ -1,7 +1,6 @@
 import { useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { Form, Input, Button, Spin, Empty } from 'antd';
-// import { AiOutlineLoading } from 'react-icons/ai';
 
 import { useFetch } from 'services/hooks/fetch';
 
@@ -19,7 +18,7 @@ export default function Home() {
 
   const handleSubmitSearchOrgs = useCallback(async (field) => {
     form.validateFields();
-    console.log({ field });
+
     const org = field?.orgs.trim();
 
     await getMembers({
@@ -53,7 +52,7 @@ export default function Home() {
             rules={[
               {
                 required: true,
-                message: 'Insira o nome de uma organização do Github',
+                message: 'Insira o nome de uma organização no Github',
               },
             ]}
           >
