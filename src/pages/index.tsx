@@ -86,7 +86,7 @@ export default function Home() {
                 <>
                   {errorMembers ? (
                     <div className={styles.hasntMembers}>
-                      <Empty description='Nenhuma organização foi encontrada' />
+                      <Empty description='Nenhuma organização foi encontrada, confira o nome que você digitou' />
                     </div>
                   ) : (
                     <>
