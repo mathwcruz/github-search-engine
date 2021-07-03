@@ -1,18 +1,37 @@
-import { useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import Image from 'next/image';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, Spin, Empty } from 'antd';
+// import { AiOutlineLoading } from 'react-icons/ai';
 
-import { UserList } from 'components/UserList';
+import { useFetch } from 'services/hooks/fetch';
+
+import { MemberList } from 'components/MemberList';
 
 import styles from 'styles/pages/Home.module.scss';
 
 export default function Home() {
   const [form] = Form.useForm();
+  const {
+    data: members,
+    get: getMembers,
+    loading: loadingMembers,
+  } = useFetch();
 
-  const handleSubmitSearchOrgs = useCallback((field) => {
-    console.log({ field });
+  const handleSubmitSearchOrgs = useCallback(async (field) => {
     form.validateFields();
+    console.log({ field });
+    const org = field?.orgs.trim();
+
+    await getMembers({
+      url: `https://api.github.com/orgs/${org}/members`,
+    });
+
+    form.resetFields();
   }, []);
+
+  useEffect(() => {
+    console.log({ members });
+  }, [members]);
 
   return (
     <div className={styles.homeContainer}>
@@ -47,12 +66,25 @@ export default function Home() {
           <Button htmlType='submit'>Pesquisar</Button>
         </Form>
       </div>
-      <div className={styles.usersList}>
-        <ul>
-          <UserList />
-          <UserList />
-          <UserList />
-          <UserList />
+      <div className={styles.membersList}>
+        <ul className={loadingMembers ? `${styles.isLoading}` : ''}>
+          {loadingMembers ? (
+            <Spin size='large' />
+          ) : (
+            <>
+              {!members ? (
+                <div className={styles.hasntMembers}>
+                  <Empty description='Nenhum dado foi encontrado' />
+                </div>
+              ) : (
+                <>
+                  {members?.map((member) => (
+                    <MemberList key={member?.id} member={member} />
+                  ))}
+                </>
+              )}
+            </>
+          )}
         </ul>
       </div>
     </div>

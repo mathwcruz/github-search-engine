@@ -33,7 +33,6 @@
       }
 
       .searchOrgsInput {
-        width: 100%;
         max-width: 31.563rem;
         height: 4.425rem;
         background: var(--white);
@@ -66,11 +65,28 @@
     }
   }
 
-  .usersList {
+  .membersList {
     width: 100%;
     max-width: 715px;
     margin-top: 7.5rem;
     padding-bottom: 3.75rem;
+
+    ul {
+      &.isLoading {
+        display: flex;
+        justify-content: center;
+      }
+
+      & + .memberItem {
+        display: block !important;
+      }
+
+      .hasntMembers {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
   }
 }
 
@@ -80,7 +96,11 @@
       font-size: 2rem !important;
       margin-bottom: 1.7rem !important;
     }
+  }
+}
 
+@media (max-width: 350px) {
+  .searchBox {
     form {
       flex-direction: column;
       gap: 1.5rem;
