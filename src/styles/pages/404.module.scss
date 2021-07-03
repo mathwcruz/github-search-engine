@@ -28,11 +28,11 @@
 
       a {
         color: var(--text-light);
+        text-decoration: underline;
         transition: color 0.4s;
 
         &:hover {
           color: var(--text-dark);
-          text-decoration: underline;
         }
       }
     }
