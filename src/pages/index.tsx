@@ -14,6 +14,7 @@ export default function Home() {
     data: members,
     get: getMembers,
     loading: loadingMembers,
+    error: errorMembers,
   } = useFetch();
 
   const handleSubmitSearchOrgs = useCallback(async (field) => {
@@ -21,9 +22,11 @@ export default function Home() {
 
     const org = field?.orgs.trim();
 
-    await getMembers({
-      url: `https://api.github.com/orgs/${org}/members`,
-    });
+    try {
+      await getMembers({
+        url: `https://api.github.com/orgs/${org}/members`,
+      });
+    } catch (error) {}
 
     form.resetFields();
   }, []);
@@ -31,6 +34,8 @@ export default function Home() {
   useEffect(() => {
     console.log({ members });
   }, [members]);
+
+  // TODO: tentar incrementar funcionalidade de paginação
 
   return (
     <div className={styles.homeContainer}>
@@ -71,15 +76,25 @@ export default function Home() {
             <Spin size='large' />
           ) : (
             <>
-              {!members ? (
+              {!members && !errorMembers ? (
                 <div className={styles.hasntMembers}>
-                  <Empty description='Nenhum dado foi encontrado' />
+                  <h3>
+                    Digite o nome de uma organização para pesquisar seus membros
+                  </h3>
                 </div>
               ) : (
                 <>
-                  {members?.map((member) => (
-                    <MemberList key={member?.id} member={member} />
-                  ))}
+                  {errorMembers ? (
+                    <div className={styles.hasntMembers}>
+                      <Empty description='Nenhuma organização foi encontrada' />
+                    </div>
+                  ) : (
+                    <>
+                      {members?.map((member) => (
+                        <MemberList key={member?.id} member={member} />
+                      ))}
+                    </>
+                  )}
                 </>
               )}
             </>

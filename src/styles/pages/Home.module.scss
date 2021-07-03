@@ -81,10 +81,21 @@
         display: block !important;
       }
 
+      i {
+        background-color: var(--text-light) !important;
+      }
+
       .hasntMembers {
         display: flex;
         align-items: center;
         justify-content: center;
+
+        h3 {
+          max-width: 400px;
+          font-weight: 700;
+          font-size: 1.3rem;
+          text-align: center;
+        }
       }
     }
   }
