@@ -24,8 +24,6 @@ export const useFetch = () => {
       return Promise.resolve(response?.data);
     } catch (err) {
       setError(err?.response?.data || true);
-
-      throw new Error(err?.response?.data);
     } finally {
       setLoading(false);
     }
@@ -43,8 +41,6 @@ export const useFetch = () => {
         return Promise.resolve(response?.data);
       } catch (err) {
         setError(err?.response?.data || true);
-
-        throw new Error(err?.response?.data);
       } finally {
         setLoading(false);
       }
@@ -64,8 +60,6 @@ export const useFetch = () => {
         return Promise.resolve(response?.data);
       } catch (err) {
         setError(err?.response?.data || true);
-
-        throw new Error(err?.response?.data);
       } finally {
         setLoading(false);
       }
@@ -84,8 +78,6 @@ export const useFetch = () => {
       return Promise.resolve(response?.data);
     } catch (err) {
       setError(err?.response?.data || true);
-
-      throw new Error(err?.response?.data);
     } finally {
       setLoading(false);
     }
@@ -102,8 +94,6 @@ export const useFetch = () => {
       return Promise.resolve(response?.data);
     } catch (err) {
       setError(err?.response?.data || true);
-
-      throw new Error(err?.response?.data);
     } finally {
       setLoading(false);
     }
