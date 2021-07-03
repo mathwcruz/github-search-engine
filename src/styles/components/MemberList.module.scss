@@ -34,25 +34,33 @@
         max-width: 400px;
       }
 
-      p {
+      a {
         margin-top: 0.25rem;
         margin-bottom: 0;
-        font-size: 0.95rem;
+        font-size: 1rem;
         color: var(--text-dark);
         line-height: 1.15rem;
         max-width: 450px;
+        display: flex;
+        gap: 0.8rem;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
 
-  svg {
-    cursor: pointer;
-    margin-right: 1rem;
-    transition: all 0.3s;
+  .memberLink {
+    svg {
+      cursor: pointer;
+      margin-right: 1rem;
+      transition: all 0.3s;
 
-    &:hover {
-      filter: brightness(0.8);
-      transform: translateX(3px);
+      &:hover {
+        filter: brightness(0.8);
+        transform: translateX(3px);
+      }
     }
   }
 }
