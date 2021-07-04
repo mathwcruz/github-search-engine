@@ -10,8 +10,13 @@ type User = {
   publicRepos: number;
 };
 
+type Repositories = {};
+
 interface UserProps {
-  user: User;
+  user: {
+    userProfile: User;
+    userRepos: Repositories[];
+  };
 }
 
 import { api } from 'services/api';
@@ -20,7 +25,7 @@ export default function User({ user }: UserProps) {
   console.log({ user });
   return (
     <div>
-      <h1>usuário: {user?.name}</h1>
+      <h1>usuário: {user?.userProfile?.name}</h1>
     </div>
   );
 }
@@ -39,7 +44,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     `https://api.github.com/users/${slug}`
   );
 
-  const user = {
+  const { data: repositories } = await api.get(
+    `https://api.github.com/users/${slug}/repos`
+  );
+
+  const userProfile = {
     userId: userInfo?.login,
     name: userInfo?.name,
     avatar: userInfo?.avatar_url,
@@ -49,9 +58,22 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     publicRepos: userInfo?.public_repos,
   };
 
+  const userRepos = repositories?.map((repo) => {
+    return {
+      id: repo?.id,
+      name: repo?.name,
+      url: repo?.url,
+      description: repo?.description,
+      updatedAt: repo?.updated_at,
+    };
+  });
+
   return {
     props: {
-      user,
+      user: {
+        userProfile,
+        userRepos,
+      },
     },
   };
 };
