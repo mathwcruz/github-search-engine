@@ -75,5 +75,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         userRepos,
       },
     },
+    revalidate: 60 * 60 * 2, // => 2 horas
   };
 };
