@@ -35,16 +35,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params;
 
-  const { data } = await api.get(`https://api.github.com/users/${slug}`);
+  const { data: userInfo } = await api.get(
+    `https://api.github.com/users/${slug}`
+  );
 
   const user = {
-    userId: data?.login,
-    name: data?.name,
-    avatar: data?.avatar_url,
-    bio: data?.bio,
-    followers: data?.followers,
-    following: data?.following,
-    publicRepos: data?.public_repos,
+    userId: userInfo?.login,
+    name: userInfo?.name,
+    avatar: userInfo?.avatar_url,
+    bio: userInfo?.bio,
+    followers: userInfo?.followers,
+    following: userInfo?.following,
+    publicRepos: userInfo?.public_repos,
   };
 
   return {
