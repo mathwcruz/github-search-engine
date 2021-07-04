@@ -10,7 +10,13 @@ type User = {
   publicRepos: number;
 };
 
-type Repositories = {};
+type Repositories = {
+  id: string;
+  name: string;
+  url: string;
+  description: string;
+  updatedAt: string;
+};
 
 interface UserProps {
   user: {
@@ -44,7 +50,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     `https://api.github.com/users/${slug}`
   );
 
-  const { data: repositories } = await api.get(
+  const { data: userRepositories } = await api.get(
     `https://api.github.com/users/${slug}/repos`
   );
 
@@ -58,7 +64,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     publicRepos: userInfo?.public_repos,
   };
 
-  const userRepos = repositories?.map((repo) => {
+  const userRepos = userRepositories?.map((repo) => {
     return {
       id: repo?.id,
       name: repo?.name,
