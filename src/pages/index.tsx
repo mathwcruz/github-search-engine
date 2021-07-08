@@ -39,7 +39,7 @@ export default function Home() {
 
   return (
     <div className={styles.homeContainer}>
-      <div className={styles.backgroundBanner}>
+      <div>
         <Image
           src='/images/logo.svg'
           alt='github-search-engine'
