@@ -6,7 +6,7 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <title>github-search-engine</title>
-          <link rel='stylesheet' type='text/css' href='/styles/nprogress.css' />
+          <link rel='stylesheet' type='text/css' href='/nprogress.css' />
           <link rel='preconnect' href='https://fonts.googleapis.com' />
           <link rel='preconnect' href='https://fonts.gstatic.com' />
           <link
