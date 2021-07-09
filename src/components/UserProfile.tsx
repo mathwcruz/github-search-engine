@@ -1,15 +1,9 @@
+import { User } from 'pages/users/[slug]';
+
 import styles from 'styles/components/UserProfile.module.scss';
 
 interface UserProfileProps {
-  profile: {
-    userId: string;
-    name: string;
-    avatar: string;
-    bio: string;
-    followers: number;
-    following: number;
-    publicRepos: number;
-  };
+  profile: User;
 }
 
 export function UserProfile({ profile }: UserProfileProps) {

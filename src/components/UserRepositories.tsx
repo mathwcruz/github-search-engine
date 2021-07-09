@@ -1,6 +1,14 @@
+import { Repository } from 'pages/users/[slug]';
+
 import styles from 'styles/components/UserRepositories.module.scss';
 
-export function UserRepositories() {
+interface UserRepositoriesProps {
+  repositories: Repository[];
+}
+
+export function UserRepositories({ repositories }: UserRepositoriesProps) {
+  console.log({ repositories });
+
   return (
     <div className={styles.userRepositories}>
       <ul>

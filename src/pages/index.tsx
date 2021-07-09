@@ -31,11 +31,8 @@ export default function Home() {
     form.resetFields();
   }, []);
 
-  useEffect(() => {
-    console.log({ members });
-  }, [members]);
-
   // TODO: tentar incrementar funcionalidade de paginação
+  // TODO: salvar membros da organização nos cookies
 
   return (
     <div className={styles.homeContainer}>

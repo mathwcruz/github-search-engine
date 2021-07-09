@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 
-type User = {
+export type User = {
   userId: string;
   name: string;
   avatar: string;
@@ -13,7 +13,7 @@ type User = {
   publicRepos: number;
 };
 
-type Repositories = {
+export type Repository = {
   id: string;
   name: string;
   description: string;
@@ -24,7 +24,7 @@ type Repositories = {
 interface UserProps {
   user: {
     profile: User;
-    repositories: Repositories[];
+    repositories: Repository[];
   };
 }
 
@@ -54,7 +54,7 @@ export default function User({ user }: UserProps) {
         </Link>
       </div>
       <UserProfile profile={user?.profile} />
-      <UserRepositories />
+      <UserRepositories repositories={user?.repositories} />
     </div>
   );
 }
@@ -104,6 +104,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         repositories,
       },
     },
-    revalidate: 60 * 60 * 2, // => 2 horas
+    revalidate: 60 * 60, // => 1 hora
   };
 };
