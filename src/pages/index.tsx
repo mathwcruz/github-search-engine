@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useCallback } from 'react';
 import Image from 'next/image';
 import { Form, Input, Button, Spin, Empty } from 'antd';
 
@@ -33,6 +33,7 @@ export default function Home() {
 
   // TODO: tentar incrementar funcionalidade de paginação
   // TODO: salvar membros da organização nos cookies
+  // TODO: ver com bloquear as rotas por url com next
 
   return (
     <div className={styles.homeContainer}>
