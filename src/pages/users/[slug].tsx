@@ -29,6 +29,7 @@ interface UserProps {
 }
 
 import { UserRepositories } from 'components/UserRepositories';
+import { UserProfile } from 'components/UserProfile';
 
 import styles from 'styles/pages/User.module.scss';
 
@@ -54,33 +55,7 @@ export default function User({ user }: UserProps) {
           </a>
         </Link>
       </div>
-
-      <div className={styles.userProfile}>
-        <div className={styles.userInformations}>
-          {/* perguntar a comunidade como resolver o erro q ta dando ao usar o <Image /> do Next com imagens externas */}
-          <img src={user?.profile?.avatar} alt={user?.profile?.name} />
-          {/* caso o user nao tenha imagem, setar uma default (pesquisar imagem gratuita) */}
-          <div>
-            <h4>{user?.profile?.name}</h4>
-            <p>{user?.profile?.bio}</p>
-          </div>
-        </div>
-        <section className={styles.userGithubData}>
-          {/* componentizar essas div's */}
-          <div>
-            <strong>{user?.profile?.followers}</strong>
-            <small>Seguidores</small>
-          </div>
-          <div>
-            <strong>{user?.profile?.following}</strong>
-            <small>Seguindo</small>
-          </div>
-          <div>
-            <strong>{user?.profile?.publicRepos}</strong>
-            <small>Repos públicos</small>
-          </div>
-        </section>
-      </div>
+      <UserProfile profile={user?.profile} />
       <UserRepositories />
     </div>
   );
