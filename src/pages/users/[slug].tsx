@@ -1,7 +1,16 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import Head from 'next/head';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
+
+import { UserRepositories } from 'components/UserRepositories';
+import { UserProfile } from 'components/UserProfile';
+
+import { dateFormatter } from 'utils/dateFormatter';
+import { api } from 'services/api';
+
+import styles from 'styles/pages/User.module.scss';
 
 export type User = {
   userId: string;
@@ -28,38 +37,35 @@ interface UserProps {
   };
 }
 
-import { UserRepositories } from 'components/UserRepositories';
-import { UserProfile } from 'components/UserProfile';
-
-import { dateFormatter } from 'utils/dateFormatter';
-import { api } from 'services/api';
-
-import styles from 'styles/pages/User.module.scss';
-
 export default function User({ user }: UserProps) {
   return (
-    <div className={styles.userContainer}>
-      <div className={styles.backgroundBanner}>
-        <Image
-          src='/images/logo.svg'
-          alt='github-search-engine'
-          className={styles.logoImg}
-          width={200}
-          height={200}
+    <>
+      <Head>
+        <title>{user?.profile?.name}</title>
+      </Head>
+      <div className={styles.userContainer}>
+        <div className={styles.backgroundBanner}>
+          <Image
+            src='/images/logo.svg'
+            alt='github-search-engine'
+            className={styles.logoImg}
+            width={200}
+            height={200}
+          />
+          <Link href='/'>
+            <a>
+              <AiOutlineArrowLeft size={20} color='#a8a8b3' />
+              Voltar
+            </a>
+          </Link>
+        </div>
+        <UserProfile profile={user?.profile} />
+        <UserRepositories
+          userName={user?.profile?.name}
+          repositories={user?.repositories}
         />
-        <Link href='/'>
-          <a>
-            <AiOutlineArrowLeft size={20} color='#a8a8b3' />
-            Voltar
-          </a>
-        </Link>
       </div>
-      <UserProfile profile={user?.profile} />
-      <UserRepositories
-        userName={user?.profile?.name}
-        repositories={user?.repositories}
-      />
-    </div>
+    </>
   );
 }
 
