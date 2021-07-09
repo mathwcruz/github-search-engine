@@ -14,6 +14,7 @@ interface UserProfileProps {
 
 export function UserProfile({ profile }: UserProfileProps) {
   return (
+    // trabalhar parte responsiva
     <div className={styles.userProfile}>
       <div className={styles.userInformations}>
         {/* perguntar a comunidade como resolver o erro q ta dando ao usar o <Image /> do Next com imagens externas */}
