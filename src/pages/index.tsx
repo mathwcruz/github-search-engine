@@ -47,7 +47,7 @@ export default function Home() {
         />
       </div>
       <div className={styles.searchBox}>
-        <h2>Explore repositórios no Github.</h2>
+        <h2>Explore organizações no Github.</h2>
         <Form form={form} onFinish={handleSubmitSearchOrgs}>
           <Form.Item
             className={styles.searchOrgsItem}
