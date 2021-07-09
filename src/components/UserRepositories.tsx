@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { AiOutlineArrowRight } from 'react-icons/ai';
+import { Empty } from 'antd';
 
 import { Repository } from 'pages/users/[slug]';
 
@@ -7,48 +7,43 @@ import styles from 'styles/components/UserRepositories.module.scss';
 
 interface UserRepositoriesProps {
   repositories: Repository[];
+  userName: string;
 }
 
-export function UserRepositories({ repositories }: UserRepositoriesProps) {
-  console.log({ repositories });
-
+export function UserRepositories({
+  repositories,
+  userName,
+}: UserRepositoriesProps) {
   return (
     <div className={styles.userRepositories}>
       <ul>
-        <li>
-          <div>
-            <h3>{repositories[0]?.name}</h3>
-            <a
-              href={repositories[0]?.url}
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <AiOutlineArrowRight color='#a8a8b3' size={20} />
-            </a>
-          </div>
-          <section>
-            <p>{repositories[0]?.description}</p>
-            <strong>Última edição em {repositories[0]?.updatedAt}</strong>
-          </section>
-        </li>
-        <li>
-          <div>
-            <h3>{repositories[1]?.name}</h3>
-            <a
-              href={repositories[1]?.url}
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <AiOutlineArrowRight color='#a8a8b3' size={20} />
-            </a>
-          </div>
-          <section>
-            <p>{repositories[1]?.description}</p>
-            <strong>Última edição em {repositories[1]?.updatedAt}</strong>
-          </section>
-        </li>
+        {repositories?.length > 0 ? (
+          <>
+            {repositories?.map((repository) => (
+              <li key={repository?.id}>
+                <div>
+                  <h3>{repository?.name}</h3>
+                  <a
+                    href={repository?.url}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    <AiOutlineArrowRight color='#a8a8b3' size={20} />
+                  </a>
+                </div>
+                <section>
+                  <p>{repository?.description}</p>
+                  <strong>Última edição em {repository?.updatedAt}</strong>
+                </section>
+              </li>
+            ))}
+          </>
+        ) : (
+          <Empty
+            description={`${userName} não possui nenhum repositório público`}
+          />
+        )}
       </ul>
-      {/* caso o user nao tenha nenhum repo público, mostrar uma <Empty /> message */}
     </div>
   );
 }

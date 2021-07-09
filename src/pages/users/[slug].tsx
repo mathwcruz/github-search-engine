@@ -55,7 +55,10 @@ export default function User({ user }: UserProps) {
         </Link>
       </div>
       <UserProfile profile={user?.profile} />
-      <UserRepositories repositories={user?.repositories} />
+      <UserRepositories
+        userName={user?.profile?.name}
+        repositories={user?.repositories}
+      />
     </div>
   );
 }
@@ -92,7 +95,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     return {
       id: repo?.id,
       name: repo?.name,
-      url: repo?.url,
+      url: repo?.html_url,
       description: repo?.description,
       updatedAt: dateFormatter(repo?.updated_at, 'dd/MM/yy'),
     };
