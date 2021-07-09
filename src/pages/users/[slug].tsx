@@ -31,9 +31,10 @@ interface UserProps {
 import { UserRepositories } from 'components/UserRepositories';
 import { UserProfile } from 'components/UserProfile';
 
-import styles from 'styles/pages/User.module.scss';
-
+import { dateFormatter } from 'utils/dateFormatter';
 import { api } from 'services/api';
+
+import styles from 'styles/pages/User.module.scss';
 
 export default function User({ user }: UserProps) {
   return (
@@ -93,7 +94,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       name: repo?.name,
       url: repo?.url,
       description: repo?.description,
-      updatedAt: repo?.updated_at,
+      updatedAt: dateFormatter(repo?.updated_at, 'dd/MM/yy'),
     };
   });
 
