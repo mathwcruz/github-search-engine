@@ -36,3 +36,9 @@
     }
   }
 }
+
+@media (max-width: 350px) {
+  .backgroundBanner {
+    flex-wrap: wrap;
+  }
+}

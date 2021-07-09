@@ -36,8 +36,6 @@ import styles from 'styles/pages/User.module.scss';
 import { api } from 'services/api';
 
 export default function User({ user }: UserProps) {
-  console.log({ user });
-
   return (
     <div className={styles.userContainer}>
       <div className={styles.backgroundBanner}>
