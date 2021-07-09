@@ -28,6 +28,8 @@ interface UserProps {
   };
 }
 
+import { UserRepositories } from 'components/UserRepositories';
+
 import styles from 'styles/pages/User.module.scss';
 
 import { api } from 'services/api';
@@ -57,6 +59,7 @@ export default function User({ user }: UserProps) {
         <div className={styles.userInformations}>
           {/* perguntar a comunidade como resolver o erro q ta dando ao usar o <Image /> do Next com imagens externas */}
           <img src={user?.profile?.avatar} alt={user?.profile?.name} />
+          {/* caso o user nao tenha imagem, setar uma default (pesquisar imagem gratuita) */}
           <div>
             <h4>{user?.profile?.name}</h4>
             <p>{user?.profile?.bio}</p>
@@ -78,11 +81,7 @@ export default function User({ user }: UserProps) {
           </div>
         </section>
       </div>
-      {/* <div className={styles.userRepositories}>
-        <ul>
-          <li></li>
-        </ul>
-      </div> */}
+      <UserRepositories />
     </div>
   );
 }
