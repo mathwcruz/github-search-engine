@@ -34,6 +34,7 @@ export function MemberList({ member }: MemberListProps) {
               width={192}
               height={192}
               objectFit='cover'
+              placeholder='blur'
             />
           </motion.div>
           <footer>

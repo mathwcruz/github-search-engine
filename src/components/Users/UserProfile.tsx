@@ -26,6 +26,7 @@ export function UserProfile({ profile }: UserProfileProps) {
           width={192}
           height={192}
           objectFit='cover'
+          placeholder='blur'
         />
         {/* caso o user nao tenha imagem, setar uma default (pesquisar imagem gratuita) */}
         <div>
