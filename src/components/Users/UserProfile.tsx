@@ -1,4 +1,7 @@
 import { motion } from 'framer-motion';
+
+import { UserGithubInfosItem } from './UserGithubInfosItem';
+
 import { User } from 'pages/users/[slug]';
 
 import styles from 'styles/components/UserProfile.module.scss';
@@ -25,19 +28,12 @@ export function UserProfile({ profile }: UserProfileProps) {
         </div>
       </motion.div>
       <section className={styles.userGithubData}>
-        {/* componentizar essas div's */}
-        <div>
-          <strong>{profile?.followers}</strong>
-          <small>Seguidores</small>
-        </div>
-        <div>
-          <strong>{profile?.following}</strong>
-          <small>Seguindo</small>
-        </div>
-        <div>
-          <strong>{profile?.publicRepos}</strong>
-          <small>Repos públicos</small>
-        </div>
+        <UserGithubInfosItem metric={profile?.followers} label='Seguidores' />
+        <UserGithubInfosItem metric={profile?.following} label='Seguindo' />
+        <UserGithubInfosItem
+          metric={profile?.publicRepos}
+          label='Repos públicos'
+        />
       </section>
     </div>
   );
