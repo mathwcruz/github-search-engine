@@ -2,15 +2,12 @@ import Link from 'next/link';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { FaGithub } from 'react-icons/fa';
 
+import { Member } from 'pages/index';
+
 import styles from 'styles/components/MemberList.module.scss';
 
 interface MemberListProps {
-  member: {
-    name: string;
-    login: string;
-    avatar_url: string;
-    html_url: string;
-  };
+  member: Omit<Member, 'id'>;
 }
 
 export function MemberList({ member }: MemberListProps) {
