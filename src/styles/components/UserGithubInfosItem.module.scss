@@ -1,0 +1,16 @@
+.userGithubItem {
+  strong {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 1.5rem;
+    color: var(--text-light);
+  }
+
+  small {
+    font-size: 1rem;
+    line-height: 1.2rem;
+    color: var(--text-dark);
+  }
+}

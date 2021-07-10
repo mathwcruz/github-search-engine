@@ -1,3 +1,5 @@
+import styles from 'styles/components/UserGithubInfosItem.module.scss';
+
 interface UserGithubInfoItemProps {
   metric: number;
   label: string;
@@ -8,7 +10,7 @@ export function UserGithubInfosItem({
   label,
 }: UserGithubInfoItemProps) {
   return (
-    <div>
+    <div className={styles.userGithubItem}>
       <strong>{metric}</strong>
       <small>{label}</small>
     </div>
