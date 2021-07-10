@@ -4,8 +4,8 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 
-import { UserRepositories } from 'components/UserRepositories';
-import { UserProfile } from 'components/UserProfile';
+import { UserRepositories } from 'components/Users/UserRepositories';
+import { UserProfile } from 'components/Users/UserProfile';
 
 import { dateFormatter } from 'utils/dateFormatter';
 import { api } from 'services/api';

@@ -4,7 +4,7 @@ import { Form, Input, Button, Spin, Empty } from 'antd';
 
 import { useFetch } from 'services/hooks/fetch';
 
-import { MemberList } from 'components/MemberList';
+import { MemberList } from 'components/Members/MemberList';
 
 import styles from 'styles/pages/Home.module.scss';
 
