@@ -19,6 +19,7 @@ export function UserRepositories({
       <ul>
         {repositories?.length > 0 ? (
           <>
+            <h2>Principais repositórios</h2>
             {repositories?.map((repository) => (
               <li key={repository?.id}>
                 <div>
@@ -32,14 +33,17 @@ export function UserRepositories({
                   </a>
                 </div>
                 <section>
-                  <p>{repository?.description}</p>
-                  <strong>Última edição em {repository?.updatedAt}</strong>
+                  {repository?.description && <p>{repository.description}</p>}
+                  {repository?.updatedAt && (
+                    <strong>Última edição em {repository.updatedAt}</strong>
+                  )}
                 </section>
               </li>
             ))}
           </>
         ) : (
           <Empty
+            image='/images/no-public-repositories.svg'
             description={`${userName} não possui nenhum repositório público`}
           />
         )}

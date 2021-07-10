@@ -2,6 +2,13 @@
   padding: 5rem 0 7.2rem;
 
   ul {
+    h2 {
+      font-weight: 700;
+      font-size: 1.6rem;
+      line-height: 1.2rem;
+      margin-bottom: 1.4rem;
+    }
+
     li {
       & + li {
         margin-top: 1rem;
