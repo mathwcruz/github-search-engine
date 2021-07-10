@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 import { UserGithubInfosItem } from './UserGithubInfosItem';
@@ -19,8 +20,13 @@ export function UserProfile({ profile }: UserProfileProps) {
         transition={{ delay: 0.3 }}
         className={styles.userInformations}
       >
-        {/* perguntar a comunidade como resolver o erro q ta dando ao usar o <Image /> do Next com imagens externas */}
-        <img src={profile?.avatar} alt={profile?.name} />
+        <Image
+          src={profile?.avatar}
+          alt={profile?.name}
+          width={192}
+          height={192}
+          objectFit='cover'
+        />
         {/* caso o user nao tenha imagem, setar uma default (pesquisar imagem gratuita) */}
         <div>
           <h4>{profile?.name}</h4>
