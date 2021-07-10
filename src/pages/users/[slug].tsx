@@ -42,6 +42,13 @@ export default function User({ user }: UserProps) {
     <>
       <Head>
         <title>{user?.profile?.name}</title>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if (!document.cookie.includes('org')) {
+          window.location.href = '/'
+         }`,
+          }}
+        />
       </Head>
       <div className={styles.userContainer}>
         <div className={styles.backgroundBanner}>

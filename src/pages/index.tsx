@@ -44,7 +44,7 @@ export default function Home({ orgMembers }: HomeProps) {
       });
 
       setMembers(members);
-      Cookies.set('org', String(org));
+      Cookies.set('org', String(org), { expires: 1 });
     } catch (error) {
       console.log({ error });
     }
@@ -57,7 +57,6 @@ export default function Home({ orgMembers }: HomeProps) {
   }, [orgMembers]);
 
   // TODO: tentar incrementar funcionalidade de paginação
-  // TODO: ver com bloquear as rotas por url com next
 
   return (
     <div className={styles.homeContainer}>
