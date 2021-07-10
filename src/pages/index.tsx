@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import { Form, Input, Button, Spin, Empty } from 'antd';
+import { motion } from 'framer-motion';
 import Cookies from 'js-cookie';
 
 import { MemberList } from 'components/Members/MemberList';
@@ -56,73 +57,74 @@ export default function Home({ orgMembers }: HomeProps) {
     setMembers(orgMembers);
   }, [orgMembers]);
 
-  // TODO: tentar incrementar funcionalidade de paginação
-
   return (
-    <div className={styles.homeContainer}>
-      <div>
-        <Image
-          src='/images/logo.svg'
-          alt='github-search-engine'
-          className={styles.logoImg}
-          width={200}
-          height={200}
-        />
+    <motion.div exit={{ opacity: 0 }} initial='initial' animate='animate'>
+      <div className={styles.homeContainer}>
+        <div>
+          <Image
+            src='/images/logo.svg'
+            alt='github-search-engine'
+            className={styles.logoImg}
+            width={200}
+            height={200}
+          />
+        </div>
+        <div className={styles.searchBox}>
+          <h2>Explore organizações no Github.</h2>
+          <Form form={form} onFinish={handleSubmitSearchOrgs}>
+            <Form.Item
+              className={styles.searchOrgsItem}
+              name='org'
+              rules={[
+                {
+                  required: true,
+                  message: 'Insira o nome de uma organização no Github',
+                },
+              ]}
+            >
+              <Input
+                className={styles.searchOrgsInput}
+                bordered={false}
+                placeholder='Digite aqui'
+              />
+            </Form.Item>
+            <Button htmlType='submit'>Pesquisar</Button>
+          </Form>
+        </div>
+        <div className={styles.membersList}>
+          <ul className={loadingMembers ? `${styles.isLoading}` : ''}>
+            {loadingMembers ? (
+              <Spin size='large' />
+            ) : (
+              <>
+                {!members && !errorMembers ? (
+                  <div className={styles.hasntMembers}>
+                    <h3>
+                      Digite o nome de uma organização para pesquisar seus
+                      membros
+                    </h3>
+                  </div>
+                ) : (
+                  <>
+                    {errorMembers ? (
+                      <div className={styles.hasntMembers}>
+                        <Empty description='Nenhuma organização foi encontrada, confira o nome que você digitou' />
+                      </div>
+                    ) : (
+                      <>
+                        {members?.map((member) => (
+                          <MemberList key={member?.id} member={member} />
+                        ))}
+                      </>
+                    )}
+                  </>
+                )}
+              </>
+            )}
+          </ul>
+        </div>
       </div>
-      <div className={styles.searchBox}>
-        <h2>Explore organizações no Github.</h2>
-        <Form form={form} onFinish={handleSubmitSearchOrgs}>
-          <Form.Item
-            className={styles.searchOrgsItem}
-            name='org'
-            rules={[
-              {
-                required: true,
-                message: 'Insira o nome de uma organização no Github',
-              },
-            ]}
-          >
-            <Input
-              className={styles.searchOrgsInput}
-              bordered={false}
-              placeholder='Digite aqui'
-            />
-          </Form.Item>
-          <Button htmlType='submit'>Pesquisar</Button>
-        </Form>
-      </div>
-      <div className={styles.membersList}>
-        <ul className={loadingMembers ? `${styles.isLoading}` : ''}>
-          {loadingMembers ? (
-            <Spin size='large' />
-          ) : (
-            <>
-              {!members && !errorMembers ? (
-                <div className={styles.hasntMembers}>
-                  <h3>
-                    Digite o nome de uma organização para pesquisar seus membros
-                  </h3>
-                </div>
-              ) : (
-                <>
-                  {errorMembers ? (
-                    <div className={styles.hasntMembers}>
-                      <Empty description='Nenhuma organização foi encontrada, confira o nome que você digitou' />
-                    </div>
-                  ) : (
-                    <>
-                      {members?.map((member) => (
-                        <MemberList key={member?.id} member={member} />
-                      ))}
-                    </>
-                  )}
-                </>
-              )}
-            </>
-          )}
-        </ul>
-      </div>
-    </div>
+    </motion.div>
   );
 }
 

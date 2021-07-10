@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { User } from 'pages/users/[slug]';
 
 import styles from 'styles/components/UserProfile.module.scss';
@@ -8,9 +9,13 @@ interface UserProfileProps {
 
 export function UserProfile({ profile }: UserProfileProps) {
   return (
-    // trabalhar parte responsiva
     <div className={styles.userProfile}>
-      <div className={styles.userInformations}>
+      <motion.div
+        initial={{ x: 120, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ delay: 0.3 }}
+        className={styles.userInformations}
+      >
         {/* perguntar a comunidade como resolver o erro q ta dando ao usar o <Image /> do Next com imagens externas */}
         <img src={profile?.avatar} alt={profile?.name} />
         {/* caso o user nao tenha imagem, setar uma default (pesquisar imagem gratuita) */}
@@ -18,7 +23,7 @@ export function UserProfile({ profile }: UserProfileProps) {
           <h4>{profile?.name}</h4>
           <p>{profile?.bio}</p>
         </div>
-      </div>
+      </motion.div>
       <section className={styles.userGithubData}>
         {/* componentizar essas div's */}
         <div>

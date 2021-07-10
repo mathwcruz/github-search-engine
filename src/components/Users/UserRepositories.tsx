@@ -1,7 +1,10 @@
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { Empty } from 'antd';
+import { motion } from 'framer-motion';
 
 import { Repository } from 'pages/users/[slug]';
+
+import { fadeInUp, stagger } from 'utils/animationsData';
 
 import styles from 'styles/components/UserRepositories.module.scss';
 
@@ -15,13 +18,13 @@ export function UserRepositories({
   userName,
 }: UserRepositoriesProps) {
   return (
-    <div className={styles.userRepositories}>
+    <motion.div variants={stagger} className={styles.userRepositories}>
       <ul>
         {repositories?.length > 0 ? (
           <>
             <h2>Principais repositórios</h2>
             {repositories?.map((repository) => (
-              <li key={repository?.id}>
+              <motion.li variants={fadeInUp} key={repository?.id}>
                 <div>
                   <h3>{repository?.name}</h3>
                   <a
@@ -38,7 +41,7 @@ export function UserRepositories({
                     <strong>Última edição em {repository.updatedAt}</strong>
                   )}
                 </section>
-              </li>
+              </motion.li>
             ))}
           </>
         ) : (
@@ -48,6 +51,6 @@ export function UserRepositories({
           />
         )}
       </ul>
-    </div>
+    </motion.div>
   );
 }

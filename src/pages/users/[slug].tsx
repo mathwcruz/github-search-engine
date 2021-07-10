@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
+import { motion } from 'framer-motion';
 
 import { UserRepositories } from 'components/Users/UserRepositories';
 import { UserProfile } from 'components/Users/UserProfile';
@@ -39,7 +40,7 @@ interface UserProps {
 
 export default function User({ user }: UserProps) {
   return (
-    <>
+    <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }}>
       <Head>
         <title>{user?.profile?.name}</title>
         <script
@@ -72,7 +73,7 @@ export default function User({ user }: UserProps) {
           repositories={user?.repositories}
         />
       </div>
-    </>
+    </motion.div>
   );
 }
 
@@ -104,7 +105,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     publicRepos: userInfo?.public_repos,
   };
 
-  const repositories = userRepositories?.slice(0, 5)?.map((repo) => {
+  const repositories = userRepositories?.slice(0, 6)?.map((repo) => {
     return {
       id: repo?.id,
       name: repo?.name,
