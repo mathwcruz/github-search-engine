@@ -1,17 +1,33 @@
-import { useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import { Form, Input, Button, Spin, Empty } from 'antd';
-
-import { useFetch } from 'services/hooks/fetch';
+import Cookies from 'js-cookie';
 
 import { MemberList } from 'components/Members/MemberList';
 
+import { useFetch } from 'services/hooks/fetch';
+import { api } from 'services/api';
+
 import styles from 'styles/pages/Home.module.scss';
 
-export default function Home() {
+export type Member = {
+  id: string;
+  name: string;
+  login: string;
+  avatar_url: string;
+  html_url: string;
+};
+
+interface HomeProps {
+  orgMembers: Member[];
+}
+
+export default function Home({ orgMembers }: HomeProps) {
+  const [members, setMembers] = useState<Member[]>([]);
+
   const [form] = Form.useForm();
   const {
-    data: members,
     get: getMembers,
     loading: loadingMembers,
     error: errorMembers,
@@ -20,19 +36,27 @@ export default function Home() {
   const handleSubmitSearchOrgs = useCallback(async (field) => {
     form.validateFields();
 
-    const org = field?.orgs.trim();
+    const org = field?.org.trim();
 
     try {
-      await getMembers({
+      const members = await getMembers({
         url: `https://api.github.com/orgs/${org}/members`,
       });
-    } catch (error) {}
+
+      setMembers(members);
+      Cookies.set('org', String(org));
+    } catch (error) {
+      console.log({ error });
+    }
 
     form.resetFields();
   }, []);
 
+  useEffect(() => {
+    setMembers(orgMembers);
+  }, [orgMembers]);
+
   // TODO: tentar incrementar funcionalidade de paginação
-  // TODO: salvar membros da organização nos cookies
   // TODO: ver com bloquear as rotas por url com next
 
   return (
@@ -51,7 +75,7 @@ export default function Home() {
         <Form form={form} onFinish={handleSubmitSearchOrgs}>
           <Form.Item
             className={styles.searchOrgsItem}
-            name='orgs'
+            name='org'
             rules={[
               {
                 required: true,
@@ -102,3 +126,23 @@ export default function Home() {
     </div>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const { org } = req?.cookies;
+
+  if (org) {
+    const { data } = await api.get(
+      `https://api.github.com/orgs/${org}/members`
+    );
+
+    return {
+      props: {
+        orgMembers: data,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};
