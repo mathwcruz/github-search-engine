@@ -21,11 +21,6 @@
 
 <br>
 
-<h3 align="center"> 
-	 Application status: Finalized ✔️
-</h3>
-<br>
-
 # **Demonstration of the Mobile Layout** 📱
 
 <p align="center">
@@ -37,6 +32,10 @@
 ## <h2 align="center">Web application: https://github-search-engine.vercel.app/</h2>
 
 <br>
+
+<h3 align="center"> 
+	 Application status: Finalized ✔️
+</h3>
 
 ## :star: Features
 - [x] Search for members of organizations on Github
