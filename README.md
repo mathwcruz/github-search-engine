@@ -21,7 +21,7 @@
 
 <br>
 
-# **Demonstration of the Mobile Layout** 📱
+# **📱 Demonstration of the Mobile Layout** 
 
 <p align="center">
   <img src="./.github/mobile-demonstration.gif" width="350px"/>
@@ -63,7 +63,7 @@
 <br>
 
 # 🎲 Run application
-To run the application on the web, follow the instructions from your terminal:
+To run the application, follow the instructions from your terminal:
 - `cd github-search-engine ` and `code .`
 - run `yarn` to install the dependencies of the project
 - After that, run `yarn start` to run the application, will open at the address `localhost:3000`
