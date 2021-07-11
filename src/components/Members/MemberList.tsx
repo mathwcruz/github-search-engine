@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 import { Member } from 'pages/index';
 
-import { stagger, fadeInUp } from '~/utils/animationsData';
+import { stagger, fadeInUp } from 'utils/animationsData';
 
 import styles from 'styles/components/MemberList.module.scss';
 
@@ -39,7 +39,11 @@ export function MemberList({ member }: MemberListProps) {
           </motion.div>
           <footer>
             <h3>{member?.login}</h3>
-            <a target='_blank' href={member?.html_url}>
+            <a
+              href={member?.html_url}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               <FaGithub size={18} color='#a8a8b3' />
               Perfil
             </a>

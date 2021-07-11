@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
 import Head from 'next/head';
+import Link from 'next/link';
+import Image from 'next/image';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { motion } from 'framer-motion';
 
@@ -14,7 +14,6 @@ import { api } from 'services/api';
 import styles from 'styles/pages/User.module.scss';
 
 export type User = {
-  userId: string;
   name: string;
   avatar: string;
   bio: string;
@@ -46,8 +45,8 @@ export default function User({ user }: UserProps) {
         <script
           dangerouslySetInnerHTML={{
             __html: `if (!document.cookie.includes('org')) {
-          window.location.href = '/'
-         }`,
+              window.location.href = '/'
+            }`,
           }}
         />
       </Head>
@@ -96,7 +95,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   );
 
   const profile = {
-    userId: userInfo?.login,
     name: userInfo?.name,
     avatar: userInfo?.avatar_url,
     bio: userInfo?.bio,

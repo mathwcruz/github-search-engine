@@ -1,5 +1,5 @@
-import { AiOutlineArrowRight } from 'react-icons/ai';
 import { Empty } from 'antd';
+import { AiOutlineArrowRight } from 'react-icons/ai';
 import { motion } from 'framer-motion';
 
 import { Repository } from 'pages/users/[slug]';

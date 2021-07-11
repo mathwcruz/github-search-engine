@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-import { UserGithubInfosItem } from './UserGithubInfosItem';
-
 import { User } from 'pages/users/[slug]';
+
+import { UserGithubInfosItem } from './UserGithubInfosItem';
 
 import styles from 'styles/components/UserProfile.module.scss';
 
@@ -28,7 +28,6 @@ export function UserProfile({ profile }: UserProfileProps) {
           objectFit='cover'
           placeholder='blur'
         />
-        {/* caso o user nao tenha imagem, setar uma default (pesquisar imagem gratuita) */}
         <div>
           <h4>{profile?.name}</h4>
           <p>{profile?.bio}</p>
