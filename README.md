@@ -4,7 +4,7 @@
 
 ## **<h2 align="center">Front end application  💻</h2>**
 
-## <p><h2 align="center">An app to explore organizations and their members on Github</h2> </p>
+## <p><h2 align="center">An [app](https://github-search-engine.vercel.app) to explore organizations and their members on Github</h2> </p>
 
 <p align="center">
   <a href="#computer-demonstration-of-the-web-application">Demonstration of the application</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -26,10 +26,6 @@
 <p align="center">
   <img src="./.github/mobile-demonstration.gif" width="350px"/>
 </p>
-
-<br>
-
-## <h2 align="center">Web application: https://github-search-engine.vercel.app/</h2>
 
 <br>
 
