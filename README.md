@@ -2,9 +2,9 @@
   <img src="./public/images/gray-logo.svg" alt="github-search-engine" width="350">
 </h1>
 
-## **<h2 align="center">Front end application  💻</h2>**
+<h2 align="center">Front end application  💻</h2>
 
-## <p><h2 align="center">An [app](https://github-search-engine.vercel.app) to explore organizations and their members on Github</h2> </p>
+## <h3 align="center">An [app](https://github-search-engine.vercel.app) to explore organizations and their members on Github</h3>
 
 <p align="center">
   <a href="#computer-demonstration-of-the-web-application">Demonstration of the application</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -73,11 +73,8 @@ To run the application, follow the instructions from your terminal:
  <br />
  <sub><b>Matheus da Cruz</b></sub></a> <a href="https://app.rocketseat.com.br/me/matheus-da-cruz-frontend" title="Rocketseat">  🚀</a>
 
-Desenvolvido por Matheus da Cruz 😊
-
 [![Linkedin Badge](https://img.shields.io/badge/-Matheus-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/matheus-cruz-frontend/)](https://www.linkedin.com/in/matheus-cruz-frontend/) 
 [![Gmail Badge](https://img.shields.io/badge/-matheuswachcruz@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:matheuswachcruz@gmail.com)](mailto:matheuswachcruz@gmail.com)
 <br>
 
 ### <p> <h2 align="center">Another application developed by Matheus da Cruz 👨‍💻 </h2> </p>
-
